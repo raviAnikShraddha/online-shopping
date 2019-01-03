@@ -59,7 +59,14 @@ public class PageController {
 		ModelAndView mv = new ModelAndView("page");
 		Category category = null;
 		category = categoryDAO.get(id);
-		mv.addObject("title", category.getName());
+		String name = category.getName().replace(' ', '-');
+		if (category.getName().indexOf(' ') >= 0) {
+			mv.addObject("title", name);
+			System.out.println("name -- "+name);
+		} else {
+			mv.addObject("title", category.getName());
+			System.out.println("category.getName() -- "+category.getName());
+		}
 		mv.addObject("userClickCategoryProducts", true);
 		mv.addObject("categories", categoryDAO.list());
 		mv.addObject("category", category);

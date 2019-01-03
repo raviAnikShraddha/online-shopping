@@ -23,6 +23,10 @@
 
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
+
+<!-- Datatable Bootstrap CSS -->
+<link href="${css}/dataTables.bootstrap4.css" rel="stylesheet">
+
 <!-- Bootstrap theme CSS -->
 <link href="${css}/bootstrap-pulse-theme.css" rel="stylesheet">
 <!-- Custom styles for this template -->
@@ -31,9 +35,7 @@
 <script type="text/javascript">
 	window.menu = '${title}';
 </script>
-
 </head>
-
 <body>
 	<div class="wrapper">
 		<!-- Navigation -->
@@ -55,9 +57,10 @@
 			<c:if test="${userClickContact == true}">
 				<%@include file="Contact.jsp"%>
 			</c:if>
-			
+
 			<!-- Load only when user clicks All products or category products -->
-			<c:if test="${userClickCategoryProducts == true or userClickAllProducts == true}">
+			<c:if
+				test="${userClickCategoryProducts == true or userClickAllProducts == true}">
 				<%@include file="listProducts.jsp"%>
 			</c:if>
 		</div>
@@ -70,6 +73,8 @@
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
 		<script src="${js}/myapp.js"></script>
+		<script src="${js}/jquery.dataTables.js"></script>
+		<script src="${js}/dataTables.bootstrap4.js"></script>
 	</div>
 </body>
 
