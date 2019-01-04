@@ -35,7 +35,7 @@
 
 			<div class="col-xs-12">
 				<table id="productListTable"
-					class="table table-striped table-borderd">
+					class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th></th>

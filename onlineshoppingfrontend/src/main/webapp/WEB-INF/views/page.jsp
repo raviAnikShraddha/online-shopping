@@ -38,6 +38,9 @@
 <!-- thumbnail css -->
 <link href="${css}/thumbnail.css" rel="stylesheet">
 
+<!-- panel css -->
+<link href="${css}/panel.css" rel="stylesheet">
+
 
 <script type="text/javascript">
 	window.menu = '${title}';
@@ -76,6 +79,12 @@
 			<c:if
 				test="${userClickShowProduct == true}">
 				<%@include file="singleProduct.jsp"%>
+			</c:if>
+			
+			<!-- Load only when admin clicks manage product -->
+			<c:if
+				test="${userClickManageProducts == true}">
+				<%@include file="manageProducts.jsp"%>
 			</c:if>
 		</div>
 
