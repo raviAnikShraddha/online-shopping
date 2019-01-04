@@ -32,8 +32,13 @@
 <!-- Custom styles for this template -->
 <link href="${css}/myapp.css" rel="stylesheet">
 
+<!-- glyphicon css -->
+<link href="${css}/glyphicon.css" rel="stylesheet">
+
+
 <script type="text/javascript">
 	window.menu = '${title}';
+	window.contextRoot = '${contextRoot}';
 </script>
 </head>
 <body>
