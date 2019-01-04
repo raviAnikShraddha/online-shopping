@@ -41,54 +41,37 @@
 
 <script type="text/javascript">
 	window.menu = '${title}';
-	window.contextRoot = '${contextRoot}';
 </script>
 </head>
 <body>
 	<div class="wrapper">
 		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container">
+				<a class="navbar-brand" href="${contextRoot}/home">Online
+					Shopping</a>
+			</div>
+		</nav>
 
 		<!-- Page Content -->
 		<div class="content">
-			<!-- Loading Home page here  -->
-			<c:if test="${userClickHome == true}">
-				<%@include file="home.jsp"%>
-			</c:if>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-12">
+						<div class="jumbotron" style="margin-top: 5%;">
+							<h1 style="font-weight: bolder;">${errorTitle}</h1>
+							<hr />
+							<blockquote style="word-wrap:break-word">${errorDescription}</blockquote>
+						</div>
+					</div>
+				</div>
+			</div>
 
-			<!-- Load only when user clicks about page -->
-			<c:if test="${userClickAbout == true}">
-				<%@include file="About.jsp"%>
-			</c:if>
-
-			<!-- Load only when user clicks contact page -->
-			<c:if test="${userClickContact == true}">
-				<%@include file="Contact.jsp"%>
-			</c:if>
-
-			<!-- Load only when user clicks All products or category products -->
-			<c:if
-				test="${userClickCategoryProducts == true or userClickAllProducts == true}">
-				<%@include file="listProducts.jsp"%>
-			</c:if>
-			
-			<!-- Load only when user clicks show single product -->
-			<c:if
-				test="${userClickShowProduct == true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
 		</div>
 
 		<!-- /.container -->
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
-
-		<!-- Bootstrap core JavaScript -->
-		<script src="${js}/jquery.js"></script>
-		<script src="${js}/bootstrap.bundle.min.js"></script>
-		<script src="${js}/myapp.js"></script>
-		<script src="${js}/jquery.dataTables.js"></script>
-		<script src="${js}/dataTables.bootstrap4.js"></script>
 	</div>
 </body>
 
