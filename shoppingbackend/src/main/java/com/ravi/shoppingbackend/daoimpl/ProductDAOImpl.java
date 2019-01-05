@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ravi.shoppingbackend.dao.ProductDAO;
-import com.ravi.shoppingbackend.dto.Category;
 import com.ravi.shoppingbackend.dto.Product;
 
 @Repository("productDAO")

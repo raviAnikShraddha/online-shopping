@@ -42,6 +42,8 @@
 <link href="${css}/panel.css" rel="stylesheet">
 
 
+
+
 <script type="text/javascript">
 	window.menu = '${title}';
 	window.contextRoot = '${contextRoot}';
@@ -98,6 +100,7 @@
 		<script src="${js}/myapp.js"></script>
 		<script src="${js}/jquery.dataTables.js"></script>
 		<script src="${js}/dataTables.bootstrap4.js"></script>
+		<script src="${js}/bootbox.min.js"></script>
 	</div>
 </body>
 
