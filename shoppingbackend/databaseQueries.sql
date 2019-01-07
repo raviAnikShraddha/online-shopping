@@ -52,3 +52,12 @@ VALUES ('PRDABC123DEFX', 'i Phone 5s', 'apple', 'This is the one of the best pho
 INSERT INTO product (code, name, brand, description, unit_price, quantity, is_active, category_id, supplier_id)
 VALUES ('PRDABC123DEFX', 'Samsung S7', 'Samsung', 'This is the one of the best phone available in the market !', '46,000.00', '4', true, '3', '3');
 
+CREATE TABLE cart(
+		
+		id IDENTITY,
+		user_id INT,
+		grand_total DECIMAL(10,2),
+		cart_lines INT,
+		CONSTRAINT pk_cart_id PRIMARY KEY (id),
+		foreign key (user_id) references user_detail(id)
+);

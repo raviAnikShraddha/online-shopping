@@ -262,19 +262,22 @@ $(function() {
 														message : dMsg,
 														callback : function(
 																confirmed) {
-														if (confirmed) {
+															if (confirmed) {
 																var ativationURL = window.contextRoot
 																		+ '/manage/product/'
 																		+ value
 																		+ '/activation';
-																$.post(ativationURL, function() {
-																	bootbox.alert({
-																	size : 'medium',
-																	message : data
-																	});
-															});
-														} 
-														else {
+																$
+																		.post(
+																				ativationURL,
+																				function() {
+																					bootbox
+																							.alert({
+																								size : 'medium',
+																								message : data
+																							});
+																				});
+															} else {
 																checkbox
 																		.prop(
 																				'checked',
@@ -288,5 +291,48 @@ $(function() {
 					}
 				});
 	}
+
+	// ----------------------------------------------
+
+	// validation for category
+
+	var $categoryForm = $('#categoryForm');
+
+	if ($categoryForm.length) {
+
+		$categoryForm
+				.validate({
+
+					rules : {
+						name : {
+							required : true,
+							minlength : 2
+						},
+						description : {
+							required : true
+						}
+					},
+					messages : {
+
+						name : {
+							required : 'Please add  the category !',
+							minlength : 'The category name should not be less than two characters !'
+						},
+
+						description : {
+							required : 'Please add the description for the category !'
+						}
+					},
+					errorElement : 'em',
+					errorPlacement:function(error, element){
+						// add the class of help-block
+						error.addClass('help-block');
+						// add the error element  after the input element 
+						error.insertAfter(element);
+					}
+				});
+	}
+	// ----------------------------------------------
+
 
 });

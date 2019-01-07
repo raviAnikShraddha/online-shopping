@@ -23,6 +23,7 @@ import com.ravi.onlineshoppingfrontend.utility.FileUploadUtil;
 import com.ravi.onlineshoppingfrontend.validator.ProductValidator;
 import com.ravi.shoppingbackend.dao.CategoryDAO;
 import com.ravi.shoppingbackend.dao.ProductDAO;
+import com.ravi.shoppingbackend.dao.UserDAO;
 import com.ravi.shoppingbackend.dto.Category;
 import com.ravi.shoppingbackend.dto.Product;
 
@@ -37,6 +38,10 @@ public class ManagementController {
 
 	@Autowired
 	private ProductDAO productDAO;
+	
+	
+	@Autowired
+	private UserDAO userDAO;
 
 	@RequestMapping(value = "/products", method = RequestMethod.GET)
 	public ModelAndView showManageProducts(@RequestParam(name = "operation", required = false) String operation) {
@@ -53,6 +58,9 @@ public class ManagementController {
 		if (operation != null) {
 			if (operation.equals("product")) {
 				mv.addObject("message", "Product submitted successfully !");
+			}
+			else if (operation.equals("category")) {
+				mv.addObject("message", "Category submitted successfully !");
 			}
 		}
 
@@ -130,4 +138,19 @@ public class ManagementController {
 		return isActive ? "You have successfully deactivate the product with id " + product.getId() + " !"
 				: "You have successfully activate the product with id " + product.getId() + " !";
 	}
+
+	@ModelAttribute("category")
+	public Category getCategory() {
+
+		return new Category();
+	}
+
+	// to handle the category submission
+	@RequestMapping(value = "/category", method = RequestMethod.POST)
+	public String handleCategorySubmission(@ModelAttribute Category category) {
+
+		categoryDAO.addCategory(category);
+		return "redirect:/manage/products?operation=category";
+	}
+
 }

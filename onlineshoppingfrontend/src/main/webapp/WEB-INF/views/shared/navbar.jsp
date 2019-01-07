@@ -20,6 +20,12 @@
 				<li class="nav-item" id="manageProduct"><a class="nav-link"
 					href="${contextRoot}/manage/products">Manage Products</a></li>
 			</ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item" id="register"><a class="nav-link"
+					href="${contextRoot}/register">Sign up</a></li>
+				<li class="nav-item" id="login"><a class="nav-link"
+					href="${contextRoot}/login">Login</a></li>
+			</ul>
 		</div>
 	</div>
 </nav>

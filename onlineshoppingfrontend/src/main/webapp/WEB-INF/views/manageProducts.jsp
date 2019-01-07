@@ -103,6 +103,15 @@
 									<sf:select class="form-control" path="categoryId"
 										id="categoryId" items="${categories}" itemLabel="name"
 										itemValue="id" />
+
+									<c:if test="${product.id == 0}">
+										<div class="text-right">
+											<br />
+											<button type="button" class="btn btn-warning btn-xs"
+												data-toggle="modal" data-target="#myCategoryModal">Add
+												Category</button>
+										</div>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -169,6 +178,54 @@
 			</div>
 		</div>
 
+	</div>
+
+	<div class="modal fade" id="myCategoryModal" role="dialog"
+		tabindex="-1">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Add new Category</h4>
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<!-- category form -->
+					<sf:form modelAttribute="category" id="categoryForm"
+						action="${contextRoot}/manage/category" method="POST">
+
+						<div class="form-group">
+							<div class="row">
+								<label class="col-md-4" for="category_name">Category
+									Name</label>
+								<div class="col-md-8">
+									<sf:input type="text" path="name" id="category_name"
+										class="form-control" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="row">
+								<label class="col-md-4" for="category_description">Category
+									Description</label>
+								<div class="col-md-8">
+									<sf:textarea type="text" rows="5" path="description"
+										id="category_description" class="form-control" />
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+
+							<div class="offset-md-4 col-md-8">
+								<input type="submit" value="Add Category"
+									class="btn btn-primary" />
+							</div>
+						</div>
+					</sf:form>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </div>
