@@ -80,8 +80,7 @@
 						<div class="offset-md-4 col-md-10">
 							<button type="submit" value="Submit" id="submit"
 								name="_eventId_billing" class="btn btn-primary">
-
-								Next - Billing<span class="glyphicon glyphicon-chevron-right"></span>
+								Next - Billing <span class="glyphicon glyphicon-chevron-right"></span>
 							</button>
 						</div>
 					</sf:form>

@@ -87,7 +87,7 @@
 							<button type="submit" value="Submit" id="submit"
 								name="_eventId_confirm" class="btn btn-primary">
 
-								Next - Confirm<span class="glyphicon glyphicon-chevron-right"></span>
+								Next - Confirm <span class="glyphicon glyphicon-chevron-right"></span>
 							</button>
 						</div>
 					</sf:form>
