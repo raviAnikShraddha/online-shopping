@@ -1,6 +1,11 @@
 package com.ravi.onlineshoppingfrontend.handler;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import com.ravi.onlineshoppingfrontend.model.RegisterModel;
@@ -53,6 +58,41 @@ public class RegisterHandler {
 		userDAO.addAddress(billing);
 
 		return transitionValue;
+	}
+
+	private Pattern pattern;
+	private Matcher matcher;
+	private static final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+	
+	public String validateUser(User user, MessageContext error) {
+
+		String transition = "success";
+
+		if (!(user.getPassword().equals(user.getConfirmPassword()))) {
+			error.addMessage(new MessageBuilder().error().source("confirmPassword")
+					.defaultText("Password does not matches with confirm password !").build());
+
+			transition = "failure";
+		}
+
+		if (userDAO.getByEmail(user.getEmail()) != null) {
+			error.addMessage(
+					new MessageBuilder().error().source("email").defaultText("This email is already exist !").build());
+			transition = "failure";
+		}
+		
+		pattern = Pattern.compile(EMAIL_PATTERN);
+		matcher = pattern.matcher(user.getEmail());
+		
+		if(!matcher.matches()) {
+			error.addMessage(
+					new MessageBuilder().error().source("email").defaultText("Invalid Email Id !").build());
+			transition = "failure";
+		}
+		
+		
+		return transition;
 	}
 
 }

@@ -55,4 +55,4 @@
 		<%@include file="flows-navbar.jsp"%>
 
 		<!-- Page Content -->
-		<div class="content">
+		<div class="content" style="margin-top: 2%;">

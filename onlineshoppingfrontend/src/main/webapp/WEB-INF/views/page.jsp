@@ -55,7 +55,7 @@
 		<%@include file="./shared/navbar.jsp"%>
 
 		<!-- Page Content -->
-		<div class="content">
+		<div class="content" style="margin-top: 2%;">
 			<!-- Loading Home page here  -->
 			<c:if test="${userClickHome == true}">
 				<%@include file="home.jsp"%>
