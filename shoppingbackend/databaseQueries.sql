@@ -20,13 +20,13 @@ CREATE TABLE user_detail(
 );
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
-VALUES ('Ravi Pratap', 'Kashyap', 'ADMIN', true, '$2b$10$s7LSByG7MQt7cftuQmhZqemTH8CVPRwtApVtxsVO8X6CdiSWteYxG', 'ravipratapkashyap@gmail.com', '8299456318');
+VALUES ('Ravi Pratap', 'Kashyap', 'ADMIN', true, '$2b$10$y7vxsjquBLll2R3rpHKFOO68D7xN8IbCdreoquDyvGqUVZ99dtEB6', 'ravipratapkashyap@gmail.com', '8299456318');
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
-VALUES ('Rajat', 'Mishra', 'SUPPLIER', true, '12345', 'rajat@gmail.com', '8299456318');
+VALUES ('Rajat', 'Mishra', 'SUPPLIER', true, '123456', 'rajat@gmail.com', '8299456318');
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
-VALUES ('Charas', 'Charas', 'SUPPLIER', true, '12345', 'charas@gmail.com', '8299456318');
+VALUES ('Charas', 'Charas', 'USER', true, '123456', 'charas@gmail.com', '8299456318');
 
 CREATE TABLE product(
 		id IDENTITY,
@@ -61,3 +61,24 @@ CREATE TABLE cart(
 		CONSTRAINT pk_cart_id PRIMARY KEY (id),
 		foreign key (user_id) references user_detail(id)
 );
+
+CREATE TABLE ADDRESS (
+		id IDENTITY,
+		address_line_one VARCHAR(255),
+		address_line_two VARCHAR(255),
+		city VARCHAR(50),
+		state VARCHAR(50),
+		country VARCHAR(50),
+		postal_code VARCHAR(10),
+		shipping BOOLEAN,
+		billing BOOLEAN,
+		user_id INT,
+		CONSTRAINT pk_address_id PRIMARY KEY (id),
+		foreign key (user_id) references user_detail(id)
+		);
+
+// add foreign key constraint
+
+ALTER TABLE PLANETICKETS
+ADD FOREIGN KEY (TOURISTINFO_ID) 
+REFERENCES TOURISTINFO(TOURISTINFO_ID)

@@ -3,12 +3,15 @@ package com.ravi.onlineshoppingfrontend.handler;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import com.ravi.onlineshoppingfrontend.controller.GlobalController;
 import com.ravi.onlineshoppingfrontend.model.RegisterModel;
 import com.ravi.shoppingbackend.dao.UserDAO;
 import com.ravi.shoppingbackend.dto.Address;
@@ -17,6 +20,8 @@ import com.ravi.shoppingbackend.dto.User;
 
 @Component
 public class RegisterHandler {
+
+	private static Logger logger = LoggerFactory.getLogger(RegisterHandler.class);
 
 	@Autowired
 	private UserDAO userDAO;
@@ -54,6 +59,8 @@ public class RegisterHandler {
 
 		// encode the password
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		logger.info(">>>>>> Passowrd >>>>>>>   " + passwordEncoder.encode("admin"));
 
 		userDAO.addUser(user);
 
