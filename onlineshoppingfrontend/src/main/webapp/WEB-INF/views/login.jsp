@@ -18,8 +18,6 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<meta name="_csrf" content="${_csrf.token}">
-<meta name="_csrf_header" content="${_csrf.headerName}">
 
 <title>Online Shopping - ${title}</title>
 
@@ -54,43 +52,68 @@
 <body>
 	<div class="wrapper">
 		<!-- Navigation -->
-		<%@include file="./shared/navbar.jsp"%>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+			<div class="container" style="height: 50px;">
+				<a class="navbar-brand" href="${contextRoot}/home">Online
+					Shopping</a>
+			</div>
+		</nav>
 
 		<!-- Page Content -->
-		<div class="content" style="margin-top: 2%;">
-			<!-- Loading Home page here  -->
-			<c:if test="${userClickHome == true}">
-				<%@include file="home.jsp"%>
+		<div class="content" style="margin-top: 3%;">
+			<c:if test="${not empty message}">
+				<div class="row">
+					<div class="offset-md-3 col-md-6">
+						<div class="alert alert-danger">${message}</div>
+					</div>
+				</div>
 			</c:if>
+			<div class="offset-md-4 col-md-4">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4>Login</h4>
+					</div>
+					<div class="panel-body">
+						<form action="${contextRoot}/login" method="POST"
+							class="form-horizontal" id="loginForm">
+							<div class="form-group">
+								<div class="row">
+									<label class="col-md-3" for="name">UserName:</label>
+									<div class="col-md-9">
+										<input type="text" placeholder="UserName" name="username"
+											id="username" class="form-control" />
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="row">
+									<label class="col-md-3" for="name">Password:</label>
+									<div class="col-md-9">
+										<input type="text" placeholder="Password" name="password"
+											id="password" class="form-control" />
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="offset-md-3 col-md-10">
+									<input type="submit" value="Login" id="submit"
+										class="btn btn-primary" />
+								</div>
+								<input type="hidden" name="${_csrf.parameterName}"
+									value="${_csrf.token}" />
+							</div>
 
-			<!-- Load only when user clicks about page -->
-			<c:if test="${userClickAbout == true}">
-				<%@include file="About.jsp"%>
-			</c:if>
+						</form>
+					</div>
+					<div class="panel-footer">
+						<div class="text-right">
+							NEW USER - <a href="${contextRoot}/register">Register Here</a>
 
-			<!-- Load only when user clicks contact page -->
-			<c:if test="${userClickContact == true}">
-				<%@include file="Contact.jsp"%>
-			</c:if>
+						</div>
 
-			<!-- Load only when user clicks All products or category products -->
-			<c:if
-				test="${userClickCategoryProducts == true or userClickAllProducts == true}">
-				<%@include file="listProducts.jsp"%>
-			</c:if>
-
-			<!-- Load only when user clicks show single product -->
-			<c:if test="${userClickShowProduct == true}">
-				<%@include file="singleProduct.jsp"%>
-			</c:if>
-
-			<!-- Load only when admin clicks manage product -->
-			<c:if test="${userClickManageProducts == true}">
-				<%@include file="manageProducts.jsp"%>
-			</c:if>
-
-
-
+					</div>
+				</div>
+			</div>
 
 		</div>
 
@@ -102,9 +125,6 @@
 		<script src="${js}/jquery.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
 		<script src="${js}/myapp.js"></script>
-		<script src="${js}/jquery.dataTables.js"></script>
-		<script src="${js}/dataTables.bootstrap4.js"></script>
-		<script src="${js}/bootbox.min.js"></script>
 
 		<script src="${js}/jquery.validate.js"></script>
 		<script src="${js}/jquery.validate.min.js"></script>

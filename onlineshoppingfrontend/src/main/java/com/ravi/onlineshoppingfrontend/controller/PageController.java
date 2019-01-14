@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ravi.onlineshoppingfrontend.exception.ProductNotFoundException;
@@ -122,7 +123,7 @@ public class PageController {
 	 * 
 	 * }
 	 */
-	
+
 	@RequestMapping(value = "/register")
 	public ModelAndView register() {
 
@@ -130,5 +131,30 @@ public class PageController {
 		mv.addObject("title", "About Us");
 		return mv;
 	}
+
+	/*** ---- login ---- ****/
+
+	@RequestMapping(value = "/login")
+	public ModelAndView login(@RequestParam(name = "error", required = false) String error) {
+
+		ModelAndView mv = new ModelAndView("login");
+		if (error != null) {
+
+			mv.addObject("message", "Invalid UserName and Password !");
+		}
+		mv.addObject("title", "Login");
+		return mv;
+	}
+	
+	@RequestMapping(value = "/access-denied")
+	public ModelAndView accessDenied() {
+
+		ModelAndView mv = new ModelAndView("error");
+		mv.addObject("title", "403 - Access Denied");
+		mv.addObject("errorTitle", "UnAuthorised User !");
+		mv.addObject("errorDescription", "You are not authorised to access this page !");
+		return mv;
+	}
+
 
 }

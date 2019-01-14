@@ -19,6 +19,20 @@ $(function() {
 		$("#a_" + menu).addClass('active');
 	}
 
+	// to tackle the csrf token
+
+	var token = $('meta[name="_csrf"]').attr("content");
+	var header = $('meta[name="_csrf_header"]').attr("content");
+
+	if (token.length > 0 && header.length > 0) {
+
+		$(document).ajaxSend(function(e, xhr, options) {
+
+			xhr.setRequestHeader(header, token);
+
+		});
+	}
+
 	// code for jquery datatables
 
 	$table = $('#productListTable');
@@ -274,7 +288,8 @@ $(function() {
 																					bootbox
 																							.alert({
 																								size : 'medium',
-																								message : data
+																								message : 'You are going to perform an operation '
+																									+ value
 																							});
 																				});
 															} else {
@@ -324,15 +339,52 @@ $(function() {
 						}
 					},
 					errorElement : 'em',
-					errorPlacement:function(error, element){
+					errorPlacement : function(error, element) {
 						// add the class of help-block
 						error.addClass('help-block');
-						// add the error element  after the input element 
+						// add the error element after the input element
 						error.insertAfter(element);
 					}
 				});
 	}
-	// ----------------------------------------------
 
+	// ----------------------------------------------
+	// validation for Login Form
+
+	var $loginForm = $('#loginForm');
+
+	if ($loginForm.length) {
+
+		$loginForm.validate({
+
+			rules : {
+				username : {
+					required : true,
+					email : true
+				},
+				password : {
+					required : true
+				}
+			},
+			messages : {
+
+				username : {
+					required : 'Please enter the username  !',
+					email : 'Please enter the valid email address !'
+				},
+
+				password : {
+					required : 'Please enter the password !'
+				}
+			},
+			errorElement : 'em',
+			errorPlacement : function(error, element) {
+				// add the class of help-block
+				error.addClass('help-block');
+				// add the error element after the input element
+				error.insertAfter(element);
+			}
+		});
+	}
 
 });

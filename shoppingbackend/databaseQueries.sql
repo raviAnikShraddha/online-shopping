@@ -13,14 +13,14 @@ CREATE TABLE user_detail(
 		last_name VARCHAR(50),
 		role VARCHAR(50),
 		enabled BOOLEAN,
-		password VARCHAR(50),
+		password VARCHAR(60),
 		email VARCHAR(100),
 		contact_number VARCHAR(15),
 		CONSTRAINT pk_user_id PRIMARY KEY (id)
 );
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
-VALUES ('Ravi Pratap', 'Kashyap', 'ADMIN', true, 'rpkash123', 'ravipratapkashyap@gmail.com', '8299456318');
+VALUES ('Ravi Pratap', 'Kashyap', 'ADMIN', true, '$2b$10$s7LSByG7MQt7cftuQmhZqemTH8CVPRwtApVtxsVO8X6CdiSWteYxG', 'ravipratapkashyap@gmail.com', '8299456318');
 
 INSERT INTO user_detail (first_name, last_name, role, enabled, password, email, contact_number)
 VALUES ('Rajat', 'Mishra', 'SUPPLIER', true, '12345', 'rajat@gmail.com', '8299456318');
