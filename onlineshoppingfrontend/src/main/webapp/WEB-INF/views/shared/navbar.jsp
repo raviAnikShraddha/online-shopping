@@ -1,7 +1,7 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-	<div class="container" style="height: 50px;">
+	<div class="container">
 		<a class="navbar-brand" href="${contextRoot}/home">Online Shopping</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -23,9 +23,7 @@
 					<li class="nav-item" id="manageProduct"><a class="nav-link"
 						href="${contextRoot}/manage/products">Manage Products</a></li>
 				</security:authorize>
-			</ul>
-
-			<ul class="navbar-nav ml-auto" align="right">
+				
 				<security:authorize access="isAnonymous()">
 					<li class="nav-item" id="register"><a class="nav-link"
 						href="${contextRoot}/register">Sign up</a></li>
@@ -54,6 +52,8 @@
 						</ul></li>
 				</security:authorize>
 			</ul>
+
+			
 		</div>
 	</div>
 </nav>

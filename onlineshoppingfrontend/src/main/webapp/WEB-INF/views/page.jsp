@@ -22,6 +22,8 @@
 <meta name="_csrf_header" content="${_csrf.headerName}">
 
 <title>Online Shopping - ${title}</title>
+<link rel='shortcut icon' href='favicon.ico' type='image/x-icon' />
+
 
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
