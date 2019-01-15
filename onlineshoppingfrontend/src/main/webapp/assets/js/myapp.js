@@ -396,4 +396,40 @@ $(function() {
 		});
 	}
 
+	// -----------------------------------
+	// handling the click event of handling the refresh cart button
+
+	$('button[name="refreshCart"]')
+			.click(
+					function() {
+
+						// fetch the cart line id
+						var cartLineId = $(this).attr('value');
+						var countElement = $('#count_' + cartLineId);
+						var originalCount = countElement.attr('value');
+						var currentCount = countElement.val();
+
+						if (currentCount !== originalCount) {
+
+							if (currentCount < 1 || originalCount > 3) {
+								// revert back to the original count
+								countElement.val(originalCount);
+								bootbox
+										.alert({
+
+											size : 'medium',
+											title : ' ',
+											message : 'Product count should be minimum 1 and maximum 3 !'
+										});
+							} else {
+								var updateUrl = window.contextRoot + '/cart/'
+										+ cartLineId + '/update?count='
+										+ currentCount;
+								// forward it to the cotroller
+								window.location.href = updateUrl;
+							}
+						}
+
+					});
+
 });

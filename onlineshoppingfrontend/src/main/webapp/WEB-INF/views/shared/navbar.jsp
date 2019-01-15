@@ -40,7 +40,7 @@
 					</a>
 						<ul class="dropdown-menu">
 							<security:authorize access="hasAuthority('USER')">
-								<li style="margin-left: 20px"><a href="${contextRoot}/cart">
+								<li style="margin-left: 20px"><a href="${contextRoot}/cart/show">
 										<span class="glyphicon glyphicon-shopping-cart"></span> <span
 										class="badge">${userModel.cart.cartLines}</span> - &#8377;
 										${userModel.cart.grandTotal}

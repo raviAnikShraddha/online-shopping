@@ -77,6 +77,19 @@ CREATE TABLE ADDRESS (
 		foreign key (user_id) references user_detail(id)
 		);
 
+CREATE TABLE cart_line (
+		id IDENTITY,
+		cart_id INT,
+		total DECIMAL(10,2),
+		product_id INT,
+		product_count INT,
+		buying_price DECIMAL(10,2),
+		is_available BOOLEAN,
+		CONSTRAINT pk_cart_lines_id PRIMARY KEY (id),
+		foreign key (cart_id) references cart(id),
+		foreign key (product_id) references product(id)
+		);
+
 // add foreign key constraint
 
 ALTER TABLE PLANETICKETS
